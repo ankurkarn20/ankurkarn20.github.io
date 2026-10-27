@@ -154,6 +154,12 @@ figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
 .job{position:relative;margin-bottom:30px}
 .job:before{content:"";position:absolute;left:-36px;top:7px;width:12px;height:12px;border-radius:50%;
   background:var(--bg);border:2px solid var(--accent)}
+.job{padding-left:76px;min-height:60px}
+.job .logo{position:absolute;left:0;top:0;width:60px;height:60px;object-fit:contain;padding:7px;
+  background:#fff;border-radius:14px;border:1px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.partner{display:inline-flex;align-items:center;gap:7px;margin-top:6px;font-size:12px;font-weight:600;
+  color:#1f2a44;background:#fff;border-radius:7px;padding:3px 9px 3px 7px}
+.partner img{height:13px;width:auto}
 .job .when{font:500 13px "JetBrains Mono",monospace;color:var(--muted)}
 .job h3{font-size:18px;margin-top:4px}.job .org{color:var(--accent2);font-weight:600}
 .job p{margin:6px 0 0;color:var(--muted);max-width:760px}
@@ -174,7 +180,8 @@ footer h2{margin-bottom:10px}footer .cta{justify-content:center}
 
 @media (max-width:860px){
   nav .links{display:none}.theme{margin-left:auto}.hero-grid,.resume{grid-template-columns:1fr}
-  .resume-side{position:static}.ftop,.grid,.mini{grid-template-columns:1fr}
+  .resume-side{position:static}
+  .job{padding-left:58px}.job .logo{width:46px;height:46px;padding:5px;border-radius:11px}.ftop,.grid,.mini{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}
   .skills{grid-template-columns:1fr}.hero{padding-top:56px}
 }
@@ -364,19 +371,24 @@ footer h2{margin-bottom:10px}footer .cta{justify-content:center}
   <div class="tag">// experience</div>
   <h2>Experience</h2>
   <div class="timeline">
-    <div class="job"><div class="when">Aug 2026 – Sep 2026 · Remote</div>
+    <div class="job"><img class="logo" src="img/logos/karnstack.svg" alt="Karnstack logo">
+      <div class="when">Aug 2026 – Sep 2026 · Remote</div>
       <h3>AI Automation Intern · <span class="org">Karnstack (karngyan.com)</span></h3>
       <p>Built an end-to-end AI content-creation workflow with prompt engineering, chaining Claude
         steps from topic to publish-ready draft, with reusable prompt templates that kept tone and
         quality consistent.</p></div>
-    <div class="job"><div class="when">Jun 2026 – Aug 2026 · Remote</div>
-      <h3>Security Intern · <span class="org">Pheme Software Pvt. Ltd. (IBM Platinum Business Partner)</span></h3>
+    <div class="job"><img class="logo" src="img/logos/pheme.svg" alt="Phemesoft logo">
+      <div class="when">Jun 2026 – Aug 2026 · Remote</div>
+      <h3>Security Intern · <span class="org">Pheme Software Pvt. Ltd.</span></h3>
+      <span class="partner"><img src="img/logos/ibm.svg" alt="IBM">Platinum Business Partner</span>
       <p>Mentored internship project: <b>Mobile Application Security Analysis System</b>, assessing mobile
         apps for security weaknesses.</p></div>
-    <div class="job"><div class="when">Jun 2024 – Jul 2024 · Remote</div>
+    <div class="job"><img class="logo" src="img/logos/zeroerror.png" alt="Zero Error Education logo">
+      <div class="when">Jun 2024 – Jul 2024 · Remote</div>
       <h3>Web Developer &amp; SEO Intern · <span class="org">ZeroError Education</span></h3>
       <p>Built and maintained web pages with HTML, CSS and WordPress; on-page SEO.</p></div>
-    <div class="job"><div class="when">Aug 2023 – May 2027</div>
+    <div class="job"><img class="logo" src="img/logos/upes.svg" alt="UPES logo">
+      <div class="when">Aug 2023 – May 2027</div>
       <h3>B.Tech, Computer Science &amp; Engineering · <span class="org">UPES, Dehradun</span></h3>
       <p>Specialisation in Cyber Security &amp; Forensics.</p></div>
   </div>
