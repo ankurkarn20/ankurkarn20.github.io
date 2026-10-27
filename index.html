@@ -88,6 +88,13 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--acc
 @keyframes wt-in{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.wt-line,.wt-leaf{animation:none;stroke-dashoffset:0;opacity:1}}
 
+/* resume */
+.resume{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;align-items:start}
+.resume .shot.resume-img{aspect-ratio:auto;height:auto;object-fit:contain;background:#fff;border-radius:12px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.resume-side{display:flex;flex-direction:column;gap:12px;position:sticky;top:84px}
+.resume-side .btn{justify-content:center}
+
 /* sections */
 section{padding:64px 0;border-top:1px solid var(--line)}
 h2{font-size:30px;color:var(--head);margin:6px 0 8px;letter-spacing:-.02em}
@@ -155,7 +162,8 @@ footer h2{margin-bottom:10px}footer .cta{justify-content:center}
 #lb.open{display:flex}#lb img{max-width:100%;max-height:100%;border-radius:10px}
 
 @media (max-width:860px){
-  nav .links{display:none}.theme{margin-left:auto}.hero-grid{grid-template-columns:1fr}.ftop,.grid,.mini{grid-template-columns:1fr}
+  nav .links{display:none}.theme{margin-left:auto}.hero-grid,.resume{grid-template-columns:1fr}
+  .resume-side{position:static}.ftop,.grid,.mini{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}
   .skills{grid-template-columns:1fr}.hero{padding-top:56px}
 }
@@ -166,6 +174,7 @@ footer h2{margin-bottom:10px}footer .cta{justify-content:center}
   h2,.tag,.sub{break-after:avoid}
   .wt-line,.wt-leaf{animation:none!important;stroke-dashoffset:0!important;opacity:1!important}
   @page{margin:0}
+  #resume{display:none}
   h1 em{background:none;color:var(--accent);-webkit-text-fill-color:var(--accent)}
 }
 </style>
@@ -174,7 +183,8 @@ footer h2{margin-bottom:10px}footer .cta{justify-content:center}
 <nav><div class="wrap">
   <a class="logo" href="#top">ankur<span>@</span>karn:~$</a>
   <div class="links"><a href="#work">Work</a><a href="#projects">Projects</a>
-    <a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+    <a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#resume">Resume</a>
+    <a href="#contact">Contact</a></div>
   <button class="theme" id="theme" aria-label="Toggle light or dark theme">◐</button>
 </div></nav>
 
@@ -371,6 +381,25 @@ footer h2{margin-bottom:10px}footer .cta{justify-content:center}
       <span class="chip">C++</span><span class="chip">SQL</span><span class="chip">TypeScript</span><span class="chip">FastAPI</span>
       <span class="chip">Next.js</span><span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">MySQL</span>
       <span class="chip">MongoDB</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">pytest</span></div></div>
+  </div>
+</div></section>
+
+<section id="resume"><div class="wrap">
+  <div class="tag">// resume</div>
+  <h2>Resume</h2>
+  <p class="sub">One page, everything above in brief. Click to zoom, or download the PDF.</p>
+  <div class="resume">
+    <img class="shot resume-img" src="img/resume.webp" alt="Ankur Karn's resume" loading="lazy">
+    <div class="resume-side">
+      <a class="btn primary" href="Ankur_Karn_Resume.pdf" download>Download PDF ↓</a>
+      <a class="btn" href="Ankur_Karn_Resume.pdf" target="_blank" rel="noopener">Open in new tab</a>
+      <ul class="points">
+        <li>B.Tech CSE (Cyber Security &amp; Forensics), UPES, 2027</li>
+        <li>Security Intern, Pheme Software (IBM Platinum Business Partner)</li>
+        <li>AI Automation Intern, Karnstack</li>
+        <li>CampusGPT and three ML security projects, with code on GitHub</li>
+      </ul>
+    </div>
   </div>
 </div></section>
 
