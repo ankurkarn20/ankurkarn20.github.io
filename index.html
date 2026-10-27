@@ -40,7 +40,7 @@ nav .links a{color:var(--muted)}nav .links a:hover{color:var(--head);text-decora
   padding:5px 9px;cursor:pointer;font-size:14px}
 
 /* hero */
-.hero{padding:88px 0 56px;position:relative;overflow:hidden}
+.hero{padding:56px 0 48px;position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:-40% -10% auto auto;width:640px;height:640px;
   background:radial-gradient(circle,var(--glow),transparent 65%);pointer-events:none}
 .tag{font:500 13px "JetBrains Mono",monospace;color:var(--accent);letter-spacing:.02em}
@@ -55,10 +55,38 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--acc
   font-weight:600;font-size:15px;border:1px solid var(--line);color:var(--head);background:var(--card)}
 .btn:hover{text-decoration:none;border-color:var(--accent)}
 .btn.primary{background:var(--accent);color:#04120b;border-color:var(--accent)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:52px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
 .stat b{display:block;font-size:30px;color:var(--head);letter-spacing:-.02em}
 .stat span{font-size:13px;color:var(--muted)}
+
+/* hero work tree */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:36px;align-items:center}
+.hero-grid h1{font-size:clamp(36px,4.6vw,56px)}.hero-grid .lead{font-size:17.5px}
+.hero-map{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 14px 10px}
+.map-label{font:500 11.5px "JetBrains Mono",monospace;color:var(--muted);margin:0 0 6px 4px}
+.worktree{width:100%;height:auto;display:block;overflow:visible}
+.worktree text{text-anchor:middle}
+.wt-line{fill:none;stroke-width:1.6;stroke-dasharray:400;stroke-dashoffset:400;animation:wt-draw .9s ease forwards}
+.wt-line.p{stroke:var(--accent)}.wt-line.e{stroke:var(--accent2)}.wt-line.d{stroke:#b07cff}
+.wt-node rect{fill:var(--bg2);stroke:var(--line)}
+.wt-root rect{fill:var(--head);stroke:none}
+.wt-root .wt-t1{fill:var(--bg);font:800 15px Inter,sans-serif}
+.wt-root .wt-t2{fill:var(--bg);opacity:.75;font:600 11px "JetBrains Mono",monospace}
+.wt-branch .wt-t1{font:700 13.5px Inter,sans-serif}
+.wt-branch.p rect{stroke:var(--accent)}.wt-branch.p text{fill:var(--accent)}
+.wt-branch.e rect{stroke:var(--accent2)}.wt-branch.e text{fill:var(--accent2)}
+.wt-branch.d rect{stroke:#b07cff}.wt-branch.d text{fill:#b07cff}
+.wt-leaf{opacity:0;animation:wt-in .5s ease forwards;cursor:pointer}
+.wt-leaf text{text-anchor:start}
+.wt-leaf rect{fill:var(--bg2);stroke:var(--line);transition:stroke .15s}
+.wt-leaf:hover rect{stroke:var(--head)}
+.wt-leaf.p circle{fill:var(--accent)}.wt-leaf.e circle{fill:var(--accent2)}.wt-leaf.d circle{fill:#b07cff}
+.wt-l1{fill:var(--head);font:600 12.5px Inter,sans-serif}
+.wt-l2{fill:var(--muted);font:500 10.5px "JetBrains Mono",monospace}
+@keyframes wt-draw{to{stroke-dashoffset:0}}
+@keyframes wt-in{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.wt-line,.wt-leaf{animation:none;stroke-dashoffset:0;opacity:1}}
 
 /* sections */
 section{padding:64px 0;border-top:1px solid var(--line)}
@@ -127,15 +155,18 @@ footer h2{margin-bottom:10px}footer .cta{justify-content:center}
 #lb.open{display:flex}#lb img{max-width:100%;max-height:100%;border-radius:10px}
 
 @media (max-width:860px){
-  nav .links{display:none}.theme{margin-left:auto}.ftop,.grid,.mini{grid-template-columns:1fr}
+  nav .links{display:none}.theme{margin-left:auto}.hero-grid{grid-template-columns:1fr}.ftop,.grid,.mini{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}
   .skills{grid-template-columns:1fr}.hero{padding-top:56px}
 }
 @media print{
   nav,#lb,.theme,.noprint{display:none!important}
-  section,.hero{break-inside:auto;padding:28px 0}.card,.featured,.job,.stat,.metric{break-inside:avoid}
+  section,.hero{break-inside:auto;padding:28px 0}.card,.job,.stat,.metric,.gallery figure,ul.points li{break-inside:avoid}
   .shot{cursor:default}body{font-size:13px}
   h2,.tag,.sub{break-after:avoid}
+  .wt-line,.wt-leaf{animation:none!important;stroke-dashoffset:0!important;opacity:1!important}
+  @page{margin:0}
+  h1 em{background:none;color:var(--accent);-webkit-text-fill-color:var(--accent)}
 }
 </style>
 </head>
@@ -148,6 +179,7 @@ footer h2{margin-bottom:10px}footer .cta{justify-content:center}
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
+  <div class="hero-grid"><div class="hero-text">
   <div class="tag">// cyber security · applied AI · secure systems</div>
   <h1>Hi, I'm Ankur Karn.<br>I build <em>secure AI systems.</em></h1>
   <p class="lead">B.Tech CSE (Cyber Security &amp; Forensics) at <b>UPES, Dehradun</b>, graduating 2027.
@@ -157,8 +189,9 @@ footer h2{margin-bottom:10px}footer .cta{justify-content:center}
     <a class="btn primary" href="#work">See my work ↓</a>
     <a class="btn" href="https://github.com/ankurkarn20" target="_blank" rel="noopener">GitHub</a>
     <a class="btn" href="Ankur_Karn_Resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
-    <a class="btn" href="mailto:ankurkarn20@gmail.com">ankurkarn20@gmail.com</a>
+    <a class="btn" href="mailto:ankurkarn20@gmail.com" title="ankurkarn20@gmail.com">Email</a>
   </div>
+  </div><!-- worktree --><div class="hero-map"><div class="map-label">// map of my work · click a node</div><svg class="worktree" viewBox="0 0 600 522" role="img" aria-label="Map of my work: projects, experience and education"><path class="wt-line p" style="animation-delay:0.10s" d="M128,261.0 C148.0,261.0 148.0,145.5 168,145.5"/><path class="wt-line p" style="animation-delay:0.45s" d="M286,145.5 C308.0,145.5 308.0,28.0 330,28.0"/><path class="wt-line p" style="animation-delay:0.51s" d="M286,145.5 C308.0,145.5 308.0,75.0 330,75.0"/><path class="wt-line p" style="animation-delay:0.57s" d="M286,145.5 C308.0,145.5 308.0,122.0 330,122.0"/><path class="wt-line p" style="animation-delay:0.63s" d="M286,145.5 C308.0,145.5 308.0,169.0 330,169.0"/><path class="wt-line p" style="animation-delay:0.69s" d="M286,145.5 C308.0,145.5 308.0,216.0 330,216.0"/><path class="wt-line p" style="animation-delay:0.75s" d="M286,145.5 C308.0,145.5 308.0,263.0 330,263.0"/><path class="wt-line e" style="animation-delay:0.20s" d="M128,261.0 C148.0,261.0 148.0,375.0 168,375.0"/><path class="wt-line e" style="animation-delay:0.55s" d="M286,375.0 C308.0,375.0 308.0,328.0 330,328.0"/><path class="wt-line e" style="animation-delay:0.61s" d="M286,375.0 C308.0,375.0 308.0,375.0 330,375.0"/><path class="wt-line e" style="animation-delay:0.67s" d="M286,375.0 C308.0,375.0 308.0,422.0 330,422.0"/><path class="wt-line d" style="animation-delay:0.30s" d="M128,261.0 C148.0,261.0 148.0,487.0 168,487.0"/><path class="wt-line d" style="animation-delay:0.65s" d="M286,487.0 C308.0,487.0 308.0,487.0 330,487.0"/><g class="wt-node wt-root"><rect x="2" y="229.0" width="126" height="64" rx="14"/><text x="65.0" y="257.0" class="wt-t1">Ankur Karn</text><text x="65.0" y="276.0" class="wt-t2">Security + AI</text></g><g class="wt-node wt-branch p"><rect x="168" y="127.5" width="118" height="36" rx="18"/><text x="227.0" y="150.5" class="wt-t1">Projects</text></g><g class="wt-node wt-branch e"><rect x="168" y="357.0" width="118" height="36" rx="18"/><text x="227.0" y="380.0" class="wt-t1">Experience</text></g><g class="wt-node wt-branch d"><rect x="168" y="469.0" width="118" height="36" rx="18"/><text x="227.0" y="492.0" class="wt-t1">Education</text></g><a href="#work" class="wt-leaf p" style="animation-delay:0.70s"><rect x="330" y="8" width="268" height="40" rx="9"/><circle cx="344" cy="28.0" r="4"/><text x="356" y="25" class="wt-l1">CampusGPT · AI helpdesk</text><text x="356" y="39" class="wt-l2">9/9 attacks blocked · RAG · local LLM</text></a><a href="#projects" class="wt-leaf p" style="animation-delay:0.75s"><rect x="330" y="55" width="268" height="40" rx="9"/><circle cx="344" cy="75.0" r="4"/><text x="356" y="72" class="wt-l1">Cognitive Honeypot</text><text x="356" y="86" class="wt-l2">Isolation Forest · 92% precision</text></a><a href="#projects" class="wt-leaf p" style="animation-delay:0.80s"><rect x="330" y="102" width="268" height="40" rx="9"/><circle cx="344" cy="122.0" r="4"/><text x="356" y="119" class="wt-l1">SQL Injection Detector</text><text x="356" y="133" class="wt-l2">98.6% F1 vs 47% blacklist</text></a><a href="#projects" class="wt-leaf p" style="animation-delay:0.85s"><rect x="330" y="149" width="268" height="40" rx="9"/><circle cx="344" cy="169.0" r="4"/><text x="356" y="166" class="wt-l1">DDoS Detector</text><text x="356" y="180" class="wt-l2">flash crowd ≠ attack · 0 false alarms</text></a><a href="#projects" class="wt-leaf p" style="animation-delay:0.90s"><rect x="330" y="196" width="268" height="40" rx="9"/><circle cx="344" cy="216.0" r="4"/><text x="356" y="213" class="wt-l1">Mobile App Security</text><text x="356" y="227" class="wt-l2">OWASP Mobile Top 10 · Android/iOS</text></a><a href="#projects" class="wt-leaf p" style="animation-delay:0.95s"><rect x="330" y="243" width="268" height="40" rx="9"/><circle cx="344" cy="263.0" r="4"/><text x="356" y="260" class="wt-l1">Java apps</text><text x="356" y="274" class="wt-l2">Hospital · Inventory (MySQL)</text></a><a href="#experience" class="wt-leaf e" style="animation-delay:1.00s"><rect x="330" y="308" width="268" height="40" rx="9"/><circle cx="344" cy="328.0" r="4"/><text x="356" y="325" class="wt-l1">Karnstack · AI Automation</text><text x="356" y="339" class="wt-l2">Intern · Aug–Sep 2026</text></a><a href="#experience" class="wt-leaf e" style="animation-delay:1.05s"><rect x="330" y="355" width="268" height="40" rx="9"/><circle cx="344" cy="375.0" r="4"/><text x="356" y="372" class="wt-l1">Pheme Software (IBM Partner)</text><text x="356" y="386" class="wt-l2">Security Intern · Jun–Aug 2026</text></a><a href="#experience" class="wt-leaf e" style="animation-delay:1.10s"><rect x="330" y="402" width="268" height="40" rx="9"/><circle cx="344" cy="422.0" r="4"/><text x="356" y="419" class="wt-l1">ZeroError Education</text><text x="356" y="433" class="wt-l2">Web Dev &amp; SEO Intern · 2024</text></a><a href="#experience" class="wt-leaf d" style="animation-delay:1.15s"><rect x="330" y="467" width="268" height="40" rx="9"/><circle cx="344" cy="487.0" r="4"/><text x="356" y="484" class="wt-l1">UPES Dehradun</text><text x="356" y="498" class="wt-l2">B.Tech CSE · Cyber Security · 2027</text></a></svg></div><!-- /worktree --></div>
   <div class="stats">
     <div class="stat"><b>9 / 9</b><span>prompt-injection &amp; data-leak attacks blocked in CampusGPT</span></div>
     <div class="stat"><b>98.6%</b><span>F1 of my SQL-injection detector, against 47% for a keyword blacklist</span></div>
